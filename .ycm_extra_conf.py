@@ -4,7 +4,6 @@ def Settings( ** kwargs):
         '-x',
         'c',
         '-std=c99',
-        'fvisibility=hidden',
         '-Wall',
         '-Wextra',
         '-Werror',

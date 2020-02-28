@@ -3,57 +3,44 @@
 #include <stdlib.h>
 
 
-static void sum(int array[static 9]) {
-  int i;
-  for (i = 0; i < 10; ++i) { printf("i: %d", array[i]);
-  }
-
-}
-
-/* char values as indices */
-/* static int whitespace[256] = { */
-/*   [' ' ] = 1, */
-/*   ['\t'] = 1, */
-/*   ['\f'] = 1, */
-/*   ['\n'] = 1, */
-/*   ['\r'] = 1 */
-/* }; */
-
-enum colors {
-  RED,
-  GREEN,
-  BLUE,
-  MAGENTA,
-  YELLOW
-};
-
-int goods[5] = { [RED] = 1, [MAGENTA] = 1 };
-
 /* _t is POSIX compliant */
 typedef unsigned short int mytype_t;
 
+static int counter = 0;
 
-int main(int argc, char* argv[]) 
+static void
+greet (GtkWidget *widget, gpointer data)
 {
-  GtkWidget *win;
-  gtk_init(&argc, &argv);
-  win = gtk_window_new(GTK_WINDOW_TOPLEVEL);
-  gtk_window_set_title(GTK_WINDOW(win), "Jazz time");
-  g_signal_connect(win, "destroy", G_CALLBACK(gtk_main_quit), NULL);
-  gtk_widget_show(win);
-  gtk_main();
+    g_print ("Hello, and welcome to dr.funkenstein\n");
+    g_print ("%s clicked %d times \n", (char*)data, ++counter);
+}
 
-  char str[30] = "this is only a test";
-  char *ptr;
-  long ret;
+static void
+destroy (GtkWidget *widget, gpointer data)
+{
+    gtk_main_quit();
+}
+
+int main
+(int argc, char* argv[]) 
+{
+    GtkWidget *win;
+    GtkWidget *button;
+    /* init GTK+ libs passing in cli params */
+    gtk_init(&argc, &argv);
+
+    /* standard framed window opts: _POPUP */
+    win = gtk_window_new (GTK_WINDOW_TOPLEVEL);
+    button = gtk_button_new_with_label ("Analyze Me");
+
+    gtk_container_add (GTK_CONTAINER (win), button);
+
+    g_signal_connect (win, "destroy", G_CALLBACK (destroy), NULL);
+    g_signal_connect (GTK_OBJECT (button), "clicked", G_CALLBACK (greet), "button");
 
 
-  ret = strtol(str, &ptr, 10);
-  printf("%s", ptr);
- 
-  /* int nums[10] = {1,2,3,4,5,6,7,8,9}; */
+    gtk_widget_show_all (win);
+    gtk_main ();
 
-  int a[9] = { [5] = 20, [1] = 15};
-  sum(a);
-  return 0; 
+    return 0; 
 }
