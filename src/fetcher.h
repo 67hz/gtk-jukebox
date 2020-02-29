@@ -1,11 +1,9 @@
 #ifndef fetcher_h
 #define fetcher_h
-#include <curl/curl.h>
 #include <string.h>
 
-/* @TODO forward decl curl and move curl.h to fetcher.c */
-
 typedef struct _Connection_Manager ConnectionManager;
+typedef void CURL;
 
 /**
  * @brief Basic connection class

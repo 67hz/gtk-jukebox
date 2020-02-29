@@ -30,17 +30,17 @@ int main
     char playlist[] = "Sonny Rollins Playlist";
 
     ConnectionManager *myconn;
-    myconn = connection_new(playlist);
 
-    printf("myconn %d", myconn->num);
+    // sets up a new CURL object
+    myconn = connection_new (playlist);
 
-    connection_close(myconn);
+    printf ("Playlist search: %s", myconn->req);
 
-
+    connection_close (myconn);
 
 
     /* init GTK+ libs passing in cli params */
-    gtk_init(&argc, &argv);
+    gtk_init (&argc, &argv);
 
     /* standard framed window opts: _POPUP */
     window = gtk_window_new (GTK_WINDOW_TOPLEVEL);
