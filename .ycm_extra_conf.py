@@ -10,7 +10,7 @@ flags = [
     '-Wall',
     '-Wextra',
     '-Werror',
-    '-I/usr/local/Cellar/gtk+3/3.24.14/include/gtk-3.0',
+    '-I/usr/include/gtk-3.0',
 ]
 
 DIR_OF_THIS_SCRIPT = os.path.abspath( os.path.dirname( __file__ ) )

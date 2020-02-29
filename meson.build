@@ -9,7 +9,7 @@ project(
 gtkdep = dependency('gtk+-3.0')
 libcurl4 = dependency('libcurl', version: '>= 4.0')
 
-srcdir = include_directories('musicplayer')
+srcdir = include_directories('src')
 
 executable('player',
  'main.c',
