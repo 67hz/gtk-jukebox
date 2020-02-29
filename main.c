@@ -29,13 +29,12 @@ int main
 
     char playlist[] = "Sonny Rollins Playlist";
 
-    /* ConnectionManager conn; */
-    /* ConnectionManager *myconn = &conn; */
-    ConnectionManager *myconn = malloc(sizeof(ConnectionManager));
-
+    ConnectionManager *myconn;
     myconn = connection_new(playlist);
 
     printf("myconn %d", myconn->num);
+
+    connection_close(myconn);
 
 
 
