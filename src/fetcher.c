@@ -18,8 +18,7 @@ connection_new (char* request)
   ConnectionManager *conn = malloc(sizeof(ConnectionManager));
   conn->req = request;
   conn->curl = curl;
-  conn->num = 5;
-  conn->test= display;
+  conn->display_info = display;
   return conn;
 }
 

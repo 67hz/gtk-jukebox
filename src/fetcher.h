@@ -5,6 +5,10 @@
 typedef struct _Connection_Manager ConnectionManager;
 typedef void CURL;
 
+/* cannot forward declare CURLcode enum, so cast it to a size_t */
+typedef size_t curl_code;
+
+
 /**
  * @brief Basic connection class
  *
@@ -13,18 +17,15 @@ typedef void CURL;
 struct _Connection_Manager {
   char* req; /**< holds the req url _ConnectionManager#req. */
   CURL* curl; /**< curl itself _ConnectionManager#curl. */
-  // CURLcode res; /**< res code _ConnectionManager#res. */
-  int num;
-
+  curl_code res; /**< res code ((enum)CURLcode) _ConnectionManager#res. */
 
   /* virtual methods */
-  void (*test) ();
+  void (*display_info) ();
 };
 
 ConnectionManager        *connection_new (char* req);
 void                     connection_close (ConnectionManager *self);
 ConnectionManager        *connection_request (ConnectionManager *self);
-
 
 
 #endif /* fetcher_h */
