@@ -25,7 +25,7 @@ struct _Connection_Manager {
 
 ConnectionManager        *connection_new (char* req);
 void                     connection_close (ConnectionManager *self);
-ConnectionManager        *connection_request (ConnectionManager *self);
+void                     connection_request (ConnectionManager *self);
 
 
 #endif /* fetcher_h */

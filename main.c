@@ -27,7 +27,7 @@ int main
     GtkWidget *button;
     GtkWidget *close_button;
 
-    char playlist[] = "Sonny Rollins Playlist";
+    char playlist[] = "http://dummy.restapiexample.com/api/v1/employees";
 
     ConnectionManager *myconn;
 
@@ -37,11 +37,10 @@ int main
     myconn->display_info ();
 
 
-
-    printf ("Playlist search: %s", myconn->req);
+    printf ("curling url: %s", myconn->req);
+    connection_request (myconn);
 
     connection_close (myconn);
-
 
     /* init GTK+ libs passing in cli params */
     gtk_init (&argc, &argv);

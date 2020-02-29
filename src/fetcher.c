@@ -1,16 +1,17 @@
 #include <curl/curl.h>
+#include <curl/easy.h>
 #include <stdio.h>
 #include "fetcher.h"
 #include <malloc.h>
 
-void
+  void
 display ()
 {
   printf("\n===========?>fp: virtual insanity\n");
 }
 
 
-ConnectionManager *
+  ConnectionManager *
 connection_new (char* request)
 {
   CURL *curl;
@@ -19,10 +20,39 @@ connection_new (char* request)
   conn->req = request;
   conn->curl = curl;
   conn->display_info = display;
+
+  conn->res = (CURLcode) conn->res;
   return conn;
 }
 
-void
+/* @TODO return res */
+  void
+connection_request (ConnectionManager *self)
+{
+  if (self->curl)
+  {
+    curl_easy_setopt (self->curl, CURLOPT_URL, self->req);
+    /* follow redirects */
+    curl_easy_setopt (self->curl, CURLOPT_FOLLOWLOCATION, 1L);
+
+    self->res = curl_easy_perform(self->curl);
+
+
+    if (self->res != CURLE_OK)
+    {
+      fprintf(stderr, "curl_easy_perform() failed: %s\n",
+          curl_easy_strerror (self->res));
+    }
+    else
+    {
+      printf ("\n\nres: %zu", self->res);
+    }
+  }
+}
+
+
+
+  void
 connection_close (ConnectionManager *self)
 {
   if (self->curl)
