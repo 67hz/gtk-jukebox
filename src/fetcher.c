@@ -6,7 +6,7 @@
 void
 display ()
 {
-  printf("\nfp: display\n");
+  printf("\n===========?>fp: virtual insanity\n");
 }
 
 

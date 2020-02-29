@@ -34,6 +34,7 @@ int main
     // sets up a new CURL object
     myconn = connection_new (playlist);
 
+    myconn->test();
     printf ("Playlist search: %s", myconn->req);
 
     connection_close (myconn);
