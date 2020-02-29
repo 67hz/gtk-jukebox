@@ -1,15 +1,11 @@
 #include <stdio.h>
 #include <gtk/gtk.h>
 #include <stdlib.h>
-
-
-/* _t is POSIX compliant */
-typedef unsigned short int mytype_t;
+#include "fetcher.h"
 
 static int counter = 0;
 
-static void
-greet (GtkWidget *widget, gpointer data)
+static void greet (GtkWidget *widget, gpointer data)
 {
     g_print ("Hello, and welcome to dr.funkenstein\n");
     g_print ("%s clicked %d times \n", (char*)data, ++counter);
@@ -30,6 +26,19 @@ int main
     GtkWidget *grid;
     GtkWidget *button;
     GtkWidget *close_button;
+
+    char playlist[] = "Sonny Rollins Playlist";
+
+    /* ConnectionManager conn; */
+    /* ConnectionManager *myconn = &conn; */
+    ConnectionManager *myconn = malloc(sizeof(ConnectionManager));
+
+    myconn = connection_new(playlist);
+
+    printf("myconn %d", myconn->num);
+
+
+
 
     /* init GTK+ libs passing in cli params */
     gtk_init(&argc, &argv);

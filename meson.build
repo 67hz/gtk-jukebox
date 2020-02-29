@@ -9,10 +9,16 @@ project(
 gtkdep = dependency('gtk+-3.0')
 libcurl4 = dependency('libcurl', version: '>= 4.0')
 
-srcdir = include_directories('src')
+headers = include_directories('src')
+
+sources = files(
+  'main.c',
+  './src/fetcher.c',
+)
 
 executable('player',
  'main.c',
- include_directories : srcdir,
+ sources,
+ include_directories : headers,
  dependencies : [gtkdep, libcurl4]
  )
