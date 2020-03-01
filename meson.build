@@ -8,6 +8,7 @@ project(
 )
 gtkdep = dependency('gtk+-3.0')
 libcurl4 = dependency('libcurl', version: '>= 4.0')
+gstreamer1 = dependency('gstreamer-1.0')
 
 headers = include_directories('src')
 
@@ -21,5 +22,5 @@ executable('juke-box',
  'main.c',
  sources,
  include_directories : headers,
- dependencies : [gtkdep, libcurl4]
+ dependencies : [gtkdep, libcurl4, gstreamer1]
  )

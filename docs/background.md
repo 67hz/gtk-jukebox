@@ -1,4 +1,7 @@
 
+
+
+
 GObject
 =======
 
@@ -27,9 +30,24 @@ Instantiating
 Can never fail. Use `GInitable` and `GAsyncInitable` interfaces in `GIO` lib for fallible objects.
 
 
+Virtual/Pure Virtual/Private/...
+--------------------------------
+[notes](https://developer.gnome.org/gobject/stable/howto-gobject-methods.html)
 
 
+Debugging
+---------
 
+[gdb](https://developer.gnome.org/gobject/stable/tools-refdb.html)
+
+
+Testing
+-------
+[Check](https://libcheck.github.io/check/)
+
+Docs
+----
+[Doxygen Examples](http://fnch.users.sourceforge.net/doxygen_c.html)
 
 CLibs
 ------
