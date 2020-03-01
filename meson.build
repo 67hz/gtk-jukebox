@@ -1,5 +1,5 @@
 project(
-  'musicplayer',
+  'juke-box',
   'c',
   version: '0.0.1',
   license: 'MIT',
@@ -13,10 +13,10 @@ headers = include_directories('src')
 
 sources = files(
   'main.c',
-  './src/fetcher.c',
+  './src/connection_manager.c',
 )
 
-executable('player',
+executable('juke-box',
  'main.c',
  sources,
  include_directories : headers,

@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <gtk/gtk.h>
 #include <stdlib.h>
-#include "fetcher.h"
+#include "connection_manager.h"
 
 static int counter = 0;
 

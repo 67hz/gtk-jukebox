@@ -1,5 +1,5 @@
-#ifndef fetcher_h
-#define fetcher_h
+#ifndef connection_manager_h
+#define connection_manager_h
 #include <string.h>
 
 typedef struct _Connection_Manager ConnectionManager;
@@ -28,4 +28,4 @@ void                     connection_close (ConnectionManager *self);
 void                     connection_request (ConnectionManager *self);
 
 
-#endif /* fetcher_h */
+#endif /* connection_manager_h */

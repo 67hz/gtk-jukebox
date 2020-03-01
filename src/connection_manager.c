@@ -1,7 +1,7 @@
 #include <curl/curl.h>
 #include <curl/easy.h>
 #include <stdio.h>
-#include "fetcher.h"
+#include "connection_manager.h"
 #include <malloc.h>
 
   void
