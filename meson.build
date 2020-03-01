@@ -14,6 +14,7 @@ headers = include_directories('src')
 sources = files(
   'main.c',
   './src/connection_manager.c',
+  './src/jukebox-song-player.c',
 )
 
 executable('juke-box',
