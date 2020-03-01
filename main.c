@@ -44,9 +44,7 @@ int main
   printf ("curling url: %s", myconn->req);
   connection_request (myconn);
 
-
-
-
+  jukebox_gst_test (argc, argv);
 
   connection_close (myconn);
 

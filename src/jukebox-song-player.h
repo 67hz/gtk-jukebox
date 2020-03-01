@@ -18,6 +18,10 @@ JukeboxSongPlayer         *jukebox_song_player_new        (void);
 void                       jukebox_song_player_load       (JukeboxSongPlayer *self,
                                                            gchar* url);
 
+/* temp gst test: REMOVE */
+void                       jukebox_gst_test               (int argc, char **argv);
+
+
 G_END_DECLS
 
 
