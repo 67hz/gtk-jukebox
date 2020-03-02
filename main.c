@@ -14,7 +14,6 @@ greet (GtkWidget *widget, gpointer data)
 
 }
 
-/* destroy (GtkWidget *widget, gpointer data) */
 static void
 destroy ()
 {

@@ -27,13 +27,17 @@ static void
 jukebox_song_player_constructed (GObject *object)
 {
   /* called after init() but before regular properties passed to g_object_new () */
-  printf ("DEBUG: jukebox_song_player_constructed");
+#ifdef DEBUG
+  g_message ("jukebox_song_player_constructed");
+#endif
 }
 
 JukeboxSongPlayer *
 jukebox_song_player_new ()
 {
-  printf ("\nDEBUG: new jukebox created\n");
+#ifdef DEBUG
+  g_message ("jukebox__song_player_new");
+#endif
   return g_object_new (JUKEBOX_TYPE_SONG_PLAYER, NULL);
 }
 
@@ -42,7 +46,9 @@ jukebox_song_player_new ()
 static void
 jukebox_song_player_init (JukeboxSongPlayer *self)
 {
-  printf ("\nDEBUG: jukebox_song_player_init\n");
+#ifdef DEBUG
+  g_message ("jukebox_song_player_init");
+#endif
 }
 
 
@@ -51,7 +57,9 @@ void
 jukebox_song_player_load (JukeboxSongPlayer *self,
                           gchar* url)
 {
-  printf("\nDEBUG: loading juker with: %s\n", url);
+#ifdef DEBUG
+  g_message("jukebox_song_player_load: %s", url);
+#endif
 }
 
 

@@ -6,6 +6,9 @@ project(
   default_options: 'buildtype=debugoptimized',
   meson_version: '>= 0.50.0',
 )
+
+add_global_arguments('-DDEBUG', language: 'c')
+
 gtkdep = dependency('gtk+-3.0')
 libcurl4 = dependency('libcurl', version: '>= 4.0')
 gstreamer1 = dependency('gstreamer-1.0')

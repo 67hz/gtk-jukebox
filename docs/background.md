@@ -6,6 +6,10 @@ GTK
 [GTK](https://www.gtk.org/docs/getting-started/hello-world/)
 
 
+Custom Widgets
+==============
+[custom](https://wiki.gnome.org/HowDoI/CustomWidgets)
+
 
 GObject
 =======
@@ -19,6 +23,7 @@ GStreamer
 
 [spotify plugin](https://github.com/liamw9534/gstspotify)
 
+
 Creating Custom GObject
 -----------------------
 
@@ -29,6 +34,12 @@ For a type named 'file' in namespace 'viewer', name the type instance: `ViewerFi
 Prefer final as it can be converted later but not the other way around
 
 Declare final type: `G_DECLARE_FINAL_TYPE`
+
+Signals
+-------
+[mem mgmt of signal handlers](https://developer.gnome.org/gobject/stable/gobject-Signals.html#g-signal-connect-swapped)
+
+* photos-print-setup.c: `g_signal_connect` paired with `g_signal_handlers_disconnect_by_func ()`
 
 Instantiating
 -------------
