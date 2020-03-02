@@ -11,12 +11,13 @@ struct _JukeboxLoginBox
   /* GtkEntry *primary_entry; */
   /* GtkWidget *secondary_label; */
   /* GtkEntry *secondary_entry; */
+  GtkWidget    *login_box;
   GtkWidget *entry_primary;
   GtkWidget *entry_secondary;
   GtkWidget *button;
 };
 
-G_DEFINE_TYPE(JukeboxLoginBox, jukebox_login_box, GTK_TYPE_BOX);
+G_DEFINE_TYPE(JukeboxLoginBox, jukebox_login_box, GTK_TYPE_BIN);
 
 static void on_login_clicked   (GtkButton *button, gpointer user_data);
 
@@ -69,7 +70,9 @@ jukebox_login_box_init (JukeboxLoginBox *self)
 #ifdef DEBUG
   g_message("loginbox_init");
 #endif
-  GtkWidget *login_box = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 5);
+
+  /* GtkWidget *login_box = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 5); */
+  self->login_box = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 5);
 
   self->entry_primary = gtk_entry_new ();
   self->entry_secondary = gtk_entry_new ();
@@ -80,11 +83,11 @@ jukebox_login_box_init (JukeboxLoginBox *self)
 
 
   gtk_entry_set_visibility ( GTK_ENTRY (self->entry_secondary), FALSE);
-  gtk_box_pack_start (GTK_BOX (login_box), self->entry_primary, TRUE, TRUE, 3);
-  gtk_box_pack_start (GTK_BOX (login_box), self->entry_secondary, TRUE, TRUE, 3);
-  gtk_box_pack_start (GTK_BOX (login_box), self->button, TRUE, TRUE, 3);
+  gtk_box_pack_start (GTK_BOX (self->login_box), self->entry_primary, TRUE, TRUE, 3);
+  gtk_box_pack_start (GTK_BOX (self->login_box), self->entry_secondary, TRUE, TRUE, 3);
+  gtk_box_pack_start (GTK_BOX (self->login_box), self->button, TRUE, TRUE, 3);
 
-  gtk_container_add (GTK_CONTAINER (self), login_box);
+  gtk_container_add (GTK_CONTAINER (self), self->login_box);
   gtk_widget_show_all (GTK_WIDGET (self));
 
 
@@ -106,5 +109,5 @@ on_login_clicked (GtkButton *button, gpointer user_data)
   const gchar* user = gtk_entry_get_text (GTK_ENTRY (self->entry_primary));
   const gchar* pw  = gtk_entry_get_text (GTK_ENTRY (self->entry_secondary));
   g_message("login submitted user: %s", user);
-  g_message("login submitted user: %s", pw);
+  g_message("login submitted pw: %s", pw);
 }
