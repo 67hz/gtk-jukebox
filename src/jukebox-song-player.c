@@ -37,11 +37,36 @@ jukebox_song_player_new ()
   return g_object_new (JUKEBOX_TYPE_SONG_PLAYER, NULL);
 }
 
+
+
 static void
 jukebox_song_player_init (JukeboxSongPlayer *self)
 {
   printf ("\nDEBUG: jukebox_song_player_init\n");
 }
+
+
+
+void
+jukebox_song_player_load (JukeboxSongPlayer *self,
+                          gchar* url)
+{
+  printf("\nDEBUG: loading juker with: %s\n", url);
+}
+
+
+static void
+jukebox_song_player_dispose (GObject *object)
+{
+  /* JukeboxSongPlayer *self = JUKEBOX_SONG_PLAYER (object); */
+  /* g_clear_object (&self->grid); */
+
+  G_OBJECT_CLASS (jukebox_song_player_parent_class)->dispose (object);
+}
+
+/* https://developer.gnome.org/gobject/stable/howto-gobject-destruction.htm */
+/* static void */
+/* jukebox_song_player_dispose (GObject *gobject) {}; */
 
 /**
  * Override all virtual methods here
@@ -53,20 +78,8 @@ jukebox_song_player_class_init (JukeboxSongPlayerClass *class)
 /* https://developer.gnome.org/gobject/stable/chapter-gobject.html#gobject-instantiation */
   GObjectClass *object_class = G_OBJECT_CLASS (class);
   object_class->constructed = jukebox_song_player_constructed;
+  object_class->dispose = jukebox_song_player_dispose;
 }
-
-void
-jukebox_song_player_load (JukeboxSongPlayer *self,
-                          gchar* url)
-{
-  printf("\nDEBUG: loading juker with: %s\n", url);
-}
-
-
-/* https://developer.gnome.org/gobject/stable/howto-gobject-destruction.htm */
-/* static void */
-/* jukebox_song_player_dispose (GObject *gobject) {}; */
-
 
 /**
  * GST test - move logic to separate class

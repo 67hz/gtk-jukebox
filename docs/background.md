@@ -67,4 +67,6 @@ CLibs
 gnome-photo
 -----------
 
+* photos-view-container - overrides a container
+* photo-print-setup - uses enums, defines
 * see photo-error-box.c/h for GObject usage
