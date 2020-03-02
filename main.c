@@ -3,12 +3,12 @@
 #include <stdlib.h>
 #include "connection_manager.h"
 #include "jukebox-song-player.h"
+#include "jukebox-login-box.h"
 
 static int counter = 0;
 
 static void greet (GtkWidget *widget, gpointer data)
 {
-  g_print ("Hello, and welcome to dr.funkenstein\n");
   g_print ("%s clicked %d times \n", (char*)data, ++counter);
   gtk_widget_destroy(widget);
 }
@@ -44,7 +44,7 @@ int main
   printf ("curling url: %s", myconn->req);
   connection_request (myconn);
 
-  jukebox_gst_test (argc, argv);
+  /* jukebox_gst_test (argc, argv); */
 
   connection_close (myconn);
 
@@ -68,16 +68,22 @@ int main
   button = gtk_button_new_with_label ("Analyze Me");
   g_signal_connect (button, "clicked", G_CALLBACK (greet), "button");
 
-  /* place the first button in grid cell (0,0) and make it fill
-   * one cell horizontally and vertically (no spanning)
-   */
-  gtk_grid_attach (GTK_GRID (grid), button, 0, 0, 1, 1);
+
 
   close_button = gtk_button_new_with_label ("Close it down");
   g_signal_connect_swapped (close_button, "clicked", G_CALLBACK (gtk_widget_destroy), window);
 
+
+
+
+  /* place the first button in grid cell (0,0) and make it fill
+   * one cell horizontally and vertically (no spanning)
+   */
+  gtk_grid_attach (GTK_GRID (grid), button, 0, 2, 1, 1);
+
   /* place @ (0,1) and span 2 cols, 1 row */
-  gtk_grid_attach (GTK_GRID (grid), close_button, 0, 1, 1, 1);
+  gtk_grid_attach (GTK_GRID (grid), close_button, 1, 2, 1, 1);
+
 
 
   /* gtk_widget_show (button); */

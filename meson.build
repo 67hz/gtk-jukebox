@@ -16,6 +16,7 @@ sources = files(
   'main.c',
   './src/connection_manager.c',
   './src/jukebox-song-player.c',
+  './src/jukebox-login-box.c',
 )
 
 executable('juke-box',

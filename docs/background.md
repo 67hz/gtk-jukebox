@@ -1,4 +1,9 @@
+GTK
+===
 
+
+[getting started app](https://developer.gnome.org/gtk3/stable/gtk-getting-started.html#id-1.2.3.5)
+[GTK](https://www.gtk.org/docs/getting-started/hello-world/)
 
 
 
@@ -8,6 +13,11 @@ GObject
 [gtk gobject intro](https://developer.gnome.org/gobject/stable/chapter-intro.html)
 [gobject](https://developer.gnome.org/gobject/stable/)
 
+
+GStreamer
+=========
+
+[spotify plugin](https://github.com/liamw9534/gstspotify)
 
 Creating Custom GObject
 -----------------------
