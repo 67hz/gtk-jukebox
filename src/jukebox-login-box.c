@@ -1,21 +1,26 @@
 #include <glib.h>
+#include <glib/gi18n.h>
 #include "jukebox-login-box.h"
 
 
 struct _JukeboxLoginBox
 {
-  GtkBox parent_class;
+  GtkBin parent_class;
 
   /* instance members */
-  /* GtkWidget *primary_label; */
-  /* GtkEntry *primary_entry; */
-  /* GtkWidget *secondary_label; */
-  /* GtkEntry *secondary_entry; */
-  GtkWidget    *login_box;
+  GtkWidget *combo_box;
+  GtkWidget *login_box; 
   GtkWidget *entry_primary;
   GtkWidget *entry_secondary;
   GtkWidget *button;
 };
+
+enum {
+  SERVICE_SPOTIFY,
+  SERVICE_GOOGLE,
+  SERVICE_SOUNDCLOUD
+};
+
 
 G_DEFINE_TYPE(JukeboxLoginBox, jukebox_login_box, GTK_TYPE_BIN);
 
@@ -79,19 +84,23 @@ jukebox_login_box_init (JukeboxLoginBox *self)
 
   gtk_entry_set_placeholder_text (GTK_ENTRY (self->entry_primary), "username");
   gtk_entry_set_placeholder_text (GTK_ENTRY (self->entry_secondary), "password");
-  self->button = gtk_button_new_with_label ("Login");
-
-
   gtk_entry_set_visibility ( GTK_ENTRY (self->entry_secondary), FALSE);
+
+  self->combo_box = gtk_combo_box_text_new ();
+  gtk_combo_box_text_insert_text (GTK_COMBO_BOX_TEXT (self->combo_box), SERVICE_GOOGLE, _("Google Music"));
+  gtk_combo_box_text_insert_text (GTK_COMBO_BOX_TEXT (self->combo_box), SERVICE_SPOTIFY, _("Spotify"));
+  gtk_combo_box_text_insert_text (GTK_COMBO_BOX_TEXT (self->combo_box), SERVICE_SOUNDCLOUD, _("SoundCloud"));
+  gtk_combo_box_set_active (GTK_COMBO_BOX (self->combo_box), 0);
+
+  self->button = gtk_button_new_with_label (_("Login"));
+
   gtk_box_pack_start (GTK_BOX (self->login_box), self->entry_primary, TRUE, TRUE, 3);
   gtk_box_pack_start (GTK_BOX (self->login_box), self->entry_secondary, TRUE, TRUE, 3);
+  gtk_box_pack_start (GTK_BOX (self->login_box), self->combo_box, TRUE, TRUE, 3);
   gtk_box_pack_start (GTK_BOX (self->login_box), self->button, TRUE, TRUE, 3);
 
   gtk_container_add (GTK_CONTAINER (self), self->login_box);
   gtk_widget_show_all (GTK_WIDGET (self));
-
-
-
 }
 
 static void
@@ -102,12 +111,22 @@ jukebox_login_box_class_init (JukeboxLoginBoxClass *class)
   object_class->finalize = jukebox_login_box_finalize;
 }
 
+
+/**
+ * @TODO send event back to main bus with login request info?
+ * should CLI bind to same events?
+ *
+ * perform auth here for demo purposes
+ */
 static void
 on_login_clicked (GtkButton *button, gpointer user_data)
 {
   JukeboxLoginBox *self = JUKEBOX_LOGIN_BOX (user_data);
   const gchar* user = gtk_entry_get_text (GTK_ENTRY (self->entry_primary));
   const gchar* pw  = gtk_entry_get_text (GTK_ENTRY (self->entry_secondary));
+  const gint service_id = gtk_combo_box_get_active (GTK_COMBO_BOX (self->combo_box));
+  const gchar* service = gtk_combo_box_text_get_active_text (GTK_COMBO_BOX_TEXT (self->combo_box));
   g_message("login submitted user: %s", user);
   g_message("login submitted pw: %s", pw);
+  g_message("login service: %s %d", service, service_id);
 }

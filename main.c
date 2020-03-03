@@ -20,8 +20,6 @@ destroy ()
   gtk_main_quit();
 }
 
-
-
 int main
 (int argc, char* argv[]) 
 {
