@@ -1,5 +1,5 @@
-#ifndef connection_manager_h
-#define connection_manager_h
+#ifndef __CONNECTION_MANAGER_H__
+#define __CONNECTION_MANAGER_H__
 #include <string.h>
 
 typedef struct _Connection_Manager ConnectionManager;
@@ -28,4 +28,4 @@ void                     connection_close (ConnectionManager *self);
 void                     connection_request (ConnectionManager *self);
 
 
-#endif /* connection_manager_h */
+#endif /* __CONNECTION_MANAGER_H__ */

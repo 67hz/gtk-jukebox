@@ -1,9 +1,15 @@
 GTK
 ===
 
-
 [getting started app](https://developer.gnome.org/gtk3/stable/gtk-getting-started.html#id-1.2.3.5)
 [GTK](https://www.gtk.org/docs/getting-started/hello-world/)
+
+
+GLib
+----
+
+[data structures](https://developer.ibm.com/technologies/linux/tutorials/l-glib/)
+
 
 
 Custom Widgets
@@ -16,6 +22,12 @@ GObject
 
 [gtk gobject intro](https://developer.gnome.org/gobject/stable/chapter-intro.html)
 [gobject](https://developer.gnome.org/gobject/stable/)
+
+
+[object construction](https://developer.gnome.org/gobject/stable/howto-gobject-construction.html)
+
+[GParamFlags](https://developer.gnome.org/gobject/stable/gobject-GParamSpec.html)
+
 
 
 GStreamer
@@ -37,7 +49,12 @@ Declare final type: `G_DECLARE_FINAL_TYPE`
 
 Signals
 -------
-[mem mgmt of signal handlers](https://developer.gnome.org/gobject/stable/gobject-Signals.html#g-signal-connect-swapped)
+
+* [advanced signals](https://developer.gnome.org/gtk-tutorial/stable/c1797.html)
+
+
+* [mem mgmt of signal handlers](https://developer.gnome.org/gobject/stable/gobject-Signals.html#g-signal-connect-swapped)
+
 
 * photos-print-setup.c: `g_signal_connect` paired with `g_signal_handlers_disconnect_by_func ()`
 

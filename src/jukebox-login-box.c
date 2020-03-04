@@ -1,6 +1,7 @@
 #include <glib.h>
 #include <glib/gi18n.h>
 #include "jukebox-login-box.h"
+#include "jukebox-user.h"
 
 
 struct _JukeboxLoginBox
@@ -122,11 +123,25 @@ static void
 on_login_clicked (GtkButton *button, gpointer user_data)
 {
   JukeboxLoginBox *self = JUKEBOX_LOGIN_BOX (user_data);
-  const gchar* user = gtk_entry_get_text (GTK_ENTRY (self->entry_primary));
+  const gchar* username = gtk_entry_get_text (GTK_ENTRY (self->entry_primary));
   const gchar* pw  = gtk_entry_get_text (GTK_ENTRY (self->entry_secondary));
   const gint service_id = gtk_combo_box_get_active (GTK_COMBO_BOX (self->combo_box));
   const gchar* service = gtk_combo_box_text_get_active_text (GTK_COMBO_BOX_TEXT (self->combo_box));
-  g_message("login submitted user: %s", user);
-  g_message("login submitted pw: %s", pw);
-  g_message("login service: %s %d", service, service_id);
+  g_message ("login submitted user: %s", username);
+  g_message ("login submitted pw: %s", pw);
+  g_message ("login service: %s %d", service, service_id);
+
+  JukeboxUser *user;
+  user = g_object_new (JUKEBOX_TYPE_USER, NULL);
+  g_object_set (G_OBJECT (user),
+      "servicename", service,
+      "username", username,
+      "password", pw,
+      NULL);
+
+  
+
+
+
+
 }

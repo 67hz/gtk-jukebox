@@ -20,6 +20,7 @@ sources = files(
   './src/connection_manager.c',
   './src/jukebox-song-player.c',
   './src/jukebox-login-box.c',
+  './src/jukebox-user.c',
 )
 
 executable('juke-box',
