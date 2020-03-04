@@ -139,7 +139,14 @@ on_login_clicked (GtkButton *button, gpointer user_data)
       "password", pw,
       NULL);
 
-  
+
+/* example of setting props after class init */
+#if 0
+  GValue val = G_VALUE_INIT;
+  g_value_init (&val, G_TYPE_STRING);
+  g_value_set_string (&val, "some custom service");
+  g_object_set_property (G_OBJECT (user), "servicename", &val);
+#endif
 
 
 
