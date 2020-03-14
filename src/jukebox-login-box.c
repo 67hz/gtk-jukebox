@@ -2,8 +2,7 @@
 #include <glib/gi18n.h>
 #include "jukebox-login-box.h"
 #include "jukebox-user.h"
-
-
+#include "jukebox-types.h"
 
 enum {
   AUTH_LOGIN_SIGNAL,
@@ -137,10 +136,8 @@ jukebox_login_box_class_init (JukeboxLoginBoxClass *class)
 
 
 /**
- * @TODO send event back to main bus with login request info?
- * should CLI bind to same events?
+ * \brief Send event back so main bus can handle login request
  *
- * perform auth here for demo purposes
  */
   static void
 on_login_clicked (GtkButton *button, gpointer user_data)

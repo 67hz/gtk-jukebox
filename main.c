@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <gtk/gtk.h>
 #include <stdlib.h>
+#include "jukebox-types.h"
 #include "connection_manager.h"
 #include "jukebox-song-player.h"
 #include "jukebox-login-box.h"
@@ -10,27 +11,27 @@
 
 /**
  * \brief hold the essentials in a global
- * struct. not sure if this is a good idea yet
+ * struct.
+ * TODO move to init/bootstrap/utils
  */
 typedef struct jukebox_core {
   JukeboxUser *user;
   ConnectionManager *conn;
 } jukebox_core;
 
+
+/**
+ * \brief A marker for the jukebox_core singleton
+ */
+void *jukebox_core_running;
+
 static void
 login_user (JukeboxLoginBox *login_box, GPtrArray *userData)
 {
-
     JukeboxLoginParams *params = (struct JukeboxLoginParams *)
         jukebox_login_box_get_inputs(login_box);
 
-    g_message("servce: %s", (gchar *)params->username);
-
-
-    if (!userData)
-        g_message("no user data");
-    else
-        g_message("main got login user signal");
+    g_message("username: %s", (gchar *)params->username);
 }
 
 static void

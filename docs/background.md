@@ -1,3 +1,8 @@
+GIO
+===
+
+See [GGredentials for authentication](https://developer.gnome.org/gio/stable/GCredentials.html)
+
 GTK
 ===
 

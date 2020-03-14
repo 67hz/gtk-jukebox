@@ -13,7 +13,7 @@ gtkdep = dependency('gtk+-3.0')
 libcurl4 = dependency('libcurl', version: '>= 4.0')
 gstreamer1 = dependency('gstreamer-1.0')
 
-headers = include_directories('src')
+headers = include_directories('src', 'src/core')
 
 sources = files(
   'main.c',
@@ -21,6 +21,8 @@ sources = files(
   './src/jukebox-song-player.c',
   './src/jukebox-login-box.c',
   './src/jukebox-user.c',
+  './src/jukebox-authorize-user.c',
+  './src/core/jukebox-core.c',
 )
 
 executable('juke-box',

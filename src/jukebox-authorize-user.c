@@ -15,6 +15,15 @@
 struct _JukeboxAuthorizeUser
 {
   GObject parent_instance;
-}
+  GString response_token;
+};
 
+
+    
+GString *
+jukebox_authorize_user_request_token (gpointer user_creds)
+{
+
+    return (GString *) "asdfasf23r235432tr";
+}
 

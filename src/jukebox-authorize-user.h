@@ -15,7 +15,7 @@ G_DECLARE_FINAL_TYPE (JukeboxAuthorizeUser, jukebox_authorize_user, JUKEBOX, AUT
  * see: https://stackoverflow.com/questions/22384333/passing-additional-arguments-to-gtk-function
  * @return GString - dynamic c-string that grows as needed since token is of undetermined size
  */
-GString jukebox_authorize_user_request_token (gpointer user_data);
+GString *jukebox_authorize_user_request_token (gpointer user_data);
 
 
 
