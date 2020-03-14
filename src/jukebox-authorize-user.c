@@ -19,11 +19,11 @@ struct _JukeboxAuthorizeUser
 };
 
 
-    
-GString *
+
+  GString *
 jukebox_authorize_user_request_token (gpointer user_creds)
 {
 
-    return (GString *) "asdfasf23r235432tr";
+  return (GString *) "asdfasf23r235432tr";
 }
 

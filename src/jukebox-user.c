@@ -31,11 +31,11 @@ typedef enum
 static GParamSpec *obj_properties[N_PROPERTIES] = { NULL, };
 
 
-static void
+  static void
 jukebox_user_set_property (GObject      *object,
-                           guint         property_id,
-                           const GValue *value,
-                           GParamSpec   *pspec)
+    guint         property_id,
+    const GValue *value,
+    GParamSpec   *pspec)
 {
   JukeboxUser *self = JUKEBOX_USER (object);
 
@@ -66,11 +66,11 @@ jukebox_user_set_property (GObject      *object,
   }
 }
 
-static void
+  static void
 jukebox_user_get_property (GObject    *object,
-                           guint        property_id,
-                           GValue      *value,
-                           GParamSpec  *pspec)
+    guint        property_id,
+    GValue      *value,
+    GParamSpec  *pspec)
 {
   JukeboxUser *self = JUKEBOX_USER (object);
 
@@ -92,19 +92,19 @@ jukebox_user_get_property (GObject    *object,
       G_OBJECT_WARN_INVALID_PROPERTY_ID (object, property_id, pspec);
   } }
 
-static void
+  static void
 jukebox_user_init (JukeboxUser *self)
 {
   g_message ("jukebox_user_init");
 }
 
-static void
+  static void
 jukebox_user_constructed (GObject *object)
 {
   g_message ("jukebox_user_constructed");
 }
 
-static void
+  static void
 jukebox_user_finalize (GObject *object)
 {
   g_message ("jukebox_user_finalize");
@@ -114,7 +114,7 @@ jukebox_user_finalize (GObject *object)
 /**
  * register object's properties
  */
-static void
+  static void
 jukebox_user_class_init (JukeboxUserClass * klass)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
@@ -146,34 +146,34 @@ jukebox_user_class_init (JukeboxUserClass * klass)
         G_PARAM_WRITABLE);
 
   g_object_class_install_properties (object_class,
-                                     N_PROPERTIES,
-                                     obj_properties);
+      N_PROPERTIES,
+      obj_properties);
 
 }
 
-JukeboxUser *
+  JukeboxUser *
 jukebox_user_new ()
 {
-    return g_object_new (JUKEBOX_TYPE_USER, NULL);
+  return g_object_new (JUKEBOX_TYPE_USER, NULL);
 }
 
-gboolean
+  gboolean
 jukebox_user_login(GPtrArray *userData)
 {
-    g_print("\n\n:::::::::::::::::::user_login\n\n");
-    gchar *username = (gchar *)g_ptr_array_index(userData, 0);
-    gchar *pw = (gchar *)g_ptr_array_index(userData, 1);
-    gchar *service = (gchar *)g_ptr_array_index(userData, 2);
+  g_print("\n\n:::::::::::::::::::user_login\n\n");
+  gchar *username = (gchar *)g_ptr_array_index(userData, 0);
+  gchar *pw = (gchar *)g_ptr_array_index(userData, 1);
+  gchar *service = (gchar *)g_ptr_array_index(userData, 2);
 
-    g_print("%p", username);
-    g_print("%p", pw);
-    g_print("%p", service);
+  g_print("%p", username);
+  g_print("%p", pw);
+  g_print("%p", service);
 
-    JukeboxUser *user = jukebox_user_new();
-    g_object_set (G_OBJECT (user),
-        "username", username,
-        "password", pw,
-        "servicename", service,
-        NULL);
-    return 1;
+  JukeboxUser *user = jukebox_user_new();
+  g_object_set (G_OBJECT (user),
+      "username", username,
+      "password", pw,
+      "servicename", service,
+      NULL);
+  return 1;
 }

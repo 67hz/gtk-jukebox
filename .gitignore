@@ -3,3 +3,8 @@
 **/builddir
 **/.idea
 **/.clangd
+
+/* docs */
+**/html
+**/latex
+**/Doxyfile

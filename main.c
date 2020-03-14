@@ -6,24 +6,11 @@
 #include "jukebox-song-player.h"
 #include "jukebox-login-box.h"
 #include "jukebox-user.h"
+#include "core/jukebox-core.h"
 
 #define APP_TITLE "Jukebox"
 
-/**
- * \brief hold the essentials in a global
- * struct.
- * TODO move to init/bootstrap/utils
- */
-typedef struct jukebox_core {
-  JukeboxUser *user;
-  ConnectionManager *conn;
-} jukebox_core;
 
-
-/**
- * \brief A marker for the jukebox_core singleton
- */
-void *jukebox_core_running;
 
 static void
 login_user (JukeboxLoginBox *login_box, GPtrArray *userData)
@@ -56,7 +43,6 @@ int main
   char playlist[] = "http://dummy.restapiexample.com/api/v1/employees";
   juker = jukebox_song_player_new ();
   jukebox_song_player_load (juker, playlist);
-
 
 
   // sets up a new CURL object

@@ -4,7 +4,7 @@
 #include "connection_manager.h"
 #include <malloc.h>
 
-  void
+void
 display ()
 {
   printf("\n===========?>fp: virtual insanity\n");
@@ -26,7 +26,7 @@ connection_new (char* request)
 }
 
 /* @TODO return res */
-  void
+void
 connection_request (ConnectionManager *self)
 {
   if (self->curl)

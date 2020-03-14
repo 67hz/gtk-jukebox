@@ -15,10 +15,11 @@
  * \brief A type definition for containment of login credentials.
  */
 typedef struct JukeboxLoginParams {
-    const gchar *username;
-    const gchar *pw;
-    gchar *service;
-    gint service_id;
+  const gchar *username;
+  const gchar *pw;
+  gchar *service;
+  gint service_id;
 } JukeboxLoginParams;
+
 
 #endif /* ifndef __JUKEBOX_TYPES_H__ */

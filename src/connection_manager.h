@@ -15,7 +15,7 @@ typedef size_t curl_code;
  * Curl interface.
  */
 struct _Connection_Manager {
-  char* req; /**< holds the req url _ConnectionManager#req. */
+  char* req; /**< holds *the req url _ConnectionManager#req. */
   CURL* curl; /**< curl itself _ConnectionManager#curl. */
   curl_code res; /**< res code ((enum)CURLcode) _ConnectionManager#res. */
 

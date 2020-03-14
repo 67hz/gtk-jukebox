@@ -5,22 +5,33 @@
 
 
 /**
- * \defgroup public_variables
+ * \defgroup core_public_variables
  * \{
  */
 void *jukebox_core_running;
 
 ConnectionManager *conn;
 
-/** @} */ // end of group1
+/** @} */ // end of core_public_variables
 
 
 
+/**
+ * \brief The initialization of core components to JukeBox.
+ */
 void
-jukebox_core_init (void)
+jukebox_core_init (GApplication *app)
 {
-    static int jb_core_running;
-    if (!jukebox_core_running)
-        jukebox_core_running = &jb_core_running;
+  static int jb_core_running;
+  if (!jukebox_core_running)
+    jukebox_core_running = &jb_core_running;
 }
+
+
+
+
+/* void jukebox_core_cleanup  (void); */
+/* void jukebox_core_configure(void); */
+/*  */
+/* void jukebox_core_quit     (void); */
 

@@ -12,7 +12,7 @@
 #include "connection_manager.h"
 
 /**
- * \defgroup global_variables
+ * \defgroup core_global_variables
  * \{
  */
 extern void *jukebox_core_running;
@@ -23,7 +23,20 @@ extern ConnectionManager *conn;
 
 // extern Jukebox_Player      *jukebox_core_player;
 
-/** @} */ // end of group1
+/** @} */ // end of core_global_variables
+
+
+/**
+ * \defgroup core_functions
+ * \{
+ */
+void jukebox_core_init     (GApplication *app);
+void jukebox_core_cleanup  (void);
+void jukebox_core_configure(void);
+
+void jukebox_core_quit     (void);
+
+/** @} */ // end of core_functions
 
 
 
