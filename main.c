@@ -9,6 +9,7 @@
 #include "core/jukebox-core.h"
 
 #define APP_TITLE "Jukebox"
+#define APP_ID "com.ave6.jukebox"
 
 
 
@@ -37,8 +38,12 @@ int main
   JukeboxSongPlayer          *juker;
   /* ConnectionManager          *myconn; */
 
+  /* GApplication *app = g_application_new(APP_ID, G_APPLICATION_FLAGS_NONE); */
+  jukebox_core_init();
+
   /* init GTK+ libs passing in cli params */
   gtk_init (&argc, &argv);
+
 
   char playlist[] = "http://dummy.restapiexample.com/api/v1/employees";
   juker = jukebox_song_player_new ();

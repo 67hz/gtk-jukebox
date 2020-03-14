@@ -30,7 +30,8 @@ extern ConnectionManager *conn;
  * \defgroup core_functions
  * \{
  */
-void jukebox_core_init     (GApplication *app);
+// void jukebox_core_init     (GApplication *app);
+void jukebox_core_init     ();
 void jukebox_core_cleanup  (void);
 void jukebox_core_configure(void);
 

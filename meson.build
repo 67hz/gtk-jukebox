@@ -13,7 +13,11 @@ gtkdep = dependency('gtk+-3.0')
 libcurl4 = dependency('libcurl', version: '>= 4.0')
 gstreamer1 = dependency('gstreamer-1.0')
 
-headers = include_directories('src', 'src/core')
+headers = include_directories(
+  'src',
+  'src/core',
+  'src/config',
+)
 
 sources = files(
   'main.c',
