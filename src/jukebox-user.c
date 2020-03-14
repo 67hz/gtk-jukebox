@@ -3,7 +3,6 @@
 
 
 /**
- * 
  * storing password here, need to move to a read from config file
  */
 struct _JukeboxUser
@@ -12,7 +11,7 @@ struct _JukeboxUser
 
   gchar *service_name;
   gchar *user_name;
-  gchar *user_pw;
+  gchar *user_pw;  /* @TODO move to gnome_keyring */
 
   gboolean is_logged_in;
 };
@@ -91,8 +90,7 @@ jukebox_user_get_property (GObject    *object,
 
     default:
       G_OBJECT_WARN_INVALID_PROPERTY_ID (object, property_id, pspec);
-  }
-}
+  } }
 
 static void
 jukebox_user_init (JukeboxUser *self)
@@ -151,4 +149,31 @@ jukebox_user_class_init (JukeboxUserClass * klass)
                                      N_PROPERTIES,
                                      obj_properties);
 
+}
+
+JukeboxUser *
+jukebox_user_new ()
+{
+    return g_object_new (JUKEBOX_TYPE_USER, NULL);
+}
+
+gboolean
+jukebox_user_login(GPtrArray *userData)
+{
+    g_print("\n\n:::::::::::::::::::user_login\n\n");
+    gchar *username = (gchar *)g_ptr_array_index(userData, 0);
+    gchar *pw = (gchar *)g_ptr_array_index(userData, 1);
+    gchar *service = (gchar *)g_ptr_array_index(userData, 2);
+
+    g_print("%p", username);
+    g_print("%p", pw);
+    g_print("%p", service);
+
+    JukeboxUser *user = jukebox_user_new();
+    g_object_set (G_OBJECT (user),
+        "username", username,
+        "password", pw,
+        "servicename", service,
+        NULL);
+    return 1;
 }

@@ -4,9 +4,34 @@
 #include "connection_manager.h"
 #include "jukebox-song-player.h"
 #include "jukebox-login-box.h"
+#include "jukebox-user.h"
 
 #define APP_TITLE "Jukebox"
 
+/**
+ * \brief hold the essentials in a global
+ * struct. not sure if this is a good idea yet
+ */
+typedef struct jukebox_core {
+  JukeboxUser *user;
+  ConnectionManager *conn;
+} jukebox_core;
+
+static void
+login_user (JukeboxLoginBox *login_box, GPtrArray *userData)
+{
+
+    JukeboxLoginParams *params = (struct JukeboxLoginParams *)
+        jukebox_login_box_get_inputs(login_box);
+
+    g_message("servce: %s", (gchar *)params->username);
+
+
+    if (!userData)
+        g_message("no user data");
+    else
+        g_message("main got login user signal");
+}
 
 static void
 destroy ()
@@ -57,6 +82,7 @@ int main
   close_button = gtk_button_new_with_label ("Close it down");
   g_signal_connect_swapped (close_button, "clicked", G_CALLBACK (gtk_widget_destroy), window);
 
+  g_signal_connect (login_box, "login_request", G_CALLBACK (login_user), login_box);
   gtk_grid_attach (GTK_GRID (grid), close_button, 0, 1, 1, 1);
   gtk_grid_attach(GTK_GRID (grid), login_box, 0, 2, 2, 5);
 

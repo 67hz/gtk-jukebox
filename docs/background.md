@@ -11,6 +11,9 @@ GLib
 [data structures](https://developer.ibm.com/technologies/linux/tutorials/l-glib/)
 
 
+[basic types](https://developer.gnome.org/glib/stable/glib-Basic-Types.html)
+
+
 
 Custom Widgets
 ==============
