@@ -7,7 +7,7 @@ project(
   meson_version: '>= 0.50.0',
 )
 
-add_global_arguments('-DDEBUG', language: 'c')
+add_global_arguments('-DDEBUG', '-ggdb3', language: 'c')
 
 gtkdep = dependency('gtk+-3.0')
 libcurl4 = dependency('libcurl', version: '>= 4.0')

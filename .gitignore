@@ -1,10 +1,10 @@
 **/compile_commands.json
 **/main
-**/builddir
+**/build
 **/.idea
 **/.clangd
 
-/* docs */
+**/docs
 **/html
 **/latex
 **/Doxyfile
