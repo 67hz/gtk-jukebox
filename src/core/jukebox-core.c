@@ -1,4 +1,5 @@
 #include "jukebox-core.h"
+#include "jukebox-user.h"
 #include "../config/config.h"
 
 
@@ -7,12 +8,12 @@
  * \{
  */
 void *jukebox_core_running;
-GApplication  *jukebox_core_application;
 
-ConnectionManager *conn;
+GApplication  *jukebox_core_application;
+JukeboxUser   *jukebox_user;
+ConnectionManager *jukebox_conn;
 
 /** @} */ // end of core_public_variables
-
 
 
 
@@ -24,11 +25,13 @@ jukebox_core_init ()
 {
   static int jb_core_running;
   if (!jukebox_core_running)
+  {
+    g_message("jukebox_core_running");
     jukebox_core_running = &jb_core_running;
 
-  /* test .ini read */
-  jukebox_get_configuration ();
-
+    /* test .ini read */
+    jukebox_get_configuration ();
+  }
 }
 
 

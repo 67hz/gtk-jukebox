@@ -11,7 +11,7 @@ JukeboxUser     *jukebox_user_new                         (void);
 
 gboolean         jukebox_user_login                       (GPtrArray *userData);
 
-gboolean         jukebox_user_logout                      (JukeboxUser * self);
+gboolean         jukebox_user_logout                      (JukeboxUser *self);
 
 
 

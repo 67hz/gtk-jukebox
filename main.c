@@ -1,3 +1,6 @@
+/**
+ * @TODO: Move this to a UI/client_$type.c to decouple GTK from core logic
+ */
 #include <stdio.h>
 #include <gtk/gtk.h>
 #include <stdlib.h>
@@ -39,6 +42,8 @@ int main
   /* ConnectionManager          *myconn; */
 
   /* GApplication *app = g_application_new(APP_ID, G_APPLICATION_FLAGS_NONE); */
+  jukebox_core_init();
+  jukebox_core_init();
   jukebox_core_init();
 
   /* init GTK+ libs passing in cli params */

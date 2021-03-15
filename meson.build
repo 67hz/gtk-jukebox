@@ -8,15 +8,21 @@ project(
 )
 
 add_global_arguments('-DDEBUG', '-ggdb3', language: 'c')
+# Use cc to query properties of compiler
+# e.g., has_function(funcname)
+# https://mesonbuild.com/Reference-manual.html#compiler-object
+cc = meson.get_compiler('c')
+
 
 gtkdep = dependency('gtk+-3.0')
+glib = dependency('glib-2.0', version: '>=2.44')
 libcurl4 = dependency('libcurl', version: '>= 4.0')
 gstreamer1 = dependency('gstreamer-1.0')
 
 headers = include_directories(
   'src',
-  'src/core',
-  'src/config',
+  # 'src/core',
+  # 'src/config',
 )
 
 sources = files(
@@ -33,5 +39,5 @@ executable('juke-box',
  'main.c',
  sources,
  include_directories : headers,
- dependencies : [gtkdep, libcurl4, gstreamer1]
+ dependencies : [glib, gtkdep, libcurl4, gstreamer1]
  )
